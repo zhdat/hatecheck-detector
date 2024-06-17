@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Predictions</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      h1 {
+        color: #333;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .results {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 80%;
+        max-width: 600px;
+        text-align: left;
+        margin: 2rem;
+      }
+      .results h2 {
+        margin-top: 0;
+      }
+      .results ul {
+        list-style: none;
+        padding: 0;
+      }
+      .results li {
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 1em;
+      }
+      .results li:last-child {
+        border-bottom: none;
+      }
+      .average-prediction {
+        font-weight: bold;
+        color: #d9534f;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Model Predictions</h1>
+    <form action="/predict" method="POST">
+      <input type="text" name="text" placeholder="Enter text" required />
+      <button type="submit">Predict</button>
+    </form>
+    {% if input_text %}
+    <div class="results">
+      <h2>Input Text:</h2>
+      <p>{{ input_text }}</p>
+      <h2>Predictions:</h2>
+      <ul>
+        {% for model, result in predictions.items() %}
+        <li><strong>{{ model }}:</strong> {{ result }}</li>
+        {% endfor %}
+      </ul>
+      <h2>Weighted Average Prediction:</h2>
+      <p class="average-prediction">{{ average_prediction }}</p>
+    </div>
+    {% endif %}
+  </body>
+</html>
