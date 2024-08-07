@@ -1,1 +1,7 @@
-data/*
+models/*
+logs/*
+static/*
+results/*
+.ipynb_checkpoints/*
+.conda/*
+.DS_Store
