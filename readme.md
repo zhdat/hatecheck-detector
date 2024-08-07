@@ -1,82 +1,107 @@
-# Detection de Discours de Haine sur les Réseaux Sociaux
+# Hate Speech Detection in French on Social Media
 
-## Introduction
+## Description
 
-Ce projet vise à détecter les discours de haine en langue française sur les réseaux sociaux. Le discours de haine en ligne est un problème croissant avec des implications sociales et psychologiques significatives. L'objectif est de créer un environnement en ligne plus sûr et plus inclusif en développant des systèmes de détection efficaces.
+This project aims to detect hate speech in French on social media using various machine learning and deep learning techniques. It was developed as part of an internship at the Norwegian University of Science and Technology (NTNU).
 
-## Description du Projet
+## Fonctionnalités
 
-Notre projet se concentre sur le développement d'un outil monolingue spécifiquement pour le français, en abordant le contexte linguistique et culturel unique. Nous avons créé un ensemble de données binaire, sans biais, et adapté à cet objectif. Notre outil intègre l'IA explicable pour justifier ses décisions, offrant transparence et aidant à la compréhension des résultats. Nous avons également développé une application permettant aux utilisateurs d'entrer leurs propres phrases pour tester la présence de discours de haine.
+- Creation and preprocessing of a custom French dataset
+- Implementation of machine learning models (SVM, Random Forest, Naive Bayes, Logistic Regression)
+- Use of deep learning techniques (LSTM, BiLSTM, GRU)
+- Integration of transformer models (DistilCamemBERT, DehateBeRT, CamemBERT)
+- Python application to test models on sentences
+- Explainable AI with LIME to interpret model decisions
 
-### Principales Contributions
+## Project Structure
 
-- **Développement d'un ensemble de données personnalisé**: Collecte de tweets en français et génération de phrases artificielles.
-- **Prétraitement des données**: Nettoyage des données pour améliorer la qualité, incluant la lemmatisation et la suppression des caractères spéciaux.
-- **Formation de modèles de détection**: Utilisation de techniques d'apprentissage automatique et profond, incluant SVM, Random Forest, LSTM et modèles basés sur les transformateurs comme CamemBERT.
-- **Développement d'une application**: Une application interactive permettant de tester les phrases pour la détection de discours de haine.
+├── data/
+│ ├── cleaned_combined_dataset.csv
+│ └── combined_dataset.csv
+├── logs/
+├── models/
+│ ├── camembert_model/
+│ │ ├── added_tokens.json
+│ │ ├── config.json
+│ │ ├── model.safetensors
+│ │ ├── sentencepiece.bpe.model
+│ │ ├── special_tokens_map.json
+│ │ └── tokenizer_config.json
+│ ├── dehatebert-mono-french/
+│ │ ├── config.json
+│ │ ├── model.safetensors
+│ │ ├── special_tokens_map.json
+│ │ ├── tokenizer.json
+│ │ ├── tokenizer_config.json
+│ │ └── vocab.txt
+│ ├── distilcamenbert-french-hate-speech/
+│ │ ├── config.json
+│ │ ├── model.safetensors
+│ │ ├── sentencepiece.bpe.model
+│ │ ├── special_tokens_map.json
+│ │ ├── tokenizer.json
+│ │ └── tokenizer_config.json
+│ ├── BiLSTM_model.keras
+│ ├── ensemble_model.joblib
+│ ├── GRU_model.keras
+│ ├── 'Logistic Regression_optimized.joblib'
+│ ├── LSTM_model.keras
+│ ├── 'Naive Bayes_optimized.joblib'
+│ ├── 'Random Forest_optimized.joblib'
+│ └── SVM_optimized.joblib
+├── results/
+├── static/
+├── app_latest.py
+├── clean_dataset.ipynb
+├── labelling.ipynb
+├── paraphrase.ipynb
+├── readme.md
+├── requirements.txt
+├── test.ipynb
+├── training-DL.ipynb
+├── training-LSTM.ipynb
+├── training-ML.ipynb
+└── training-transformers.ipynb
 
 ## Installation
 
-Pour installer et exécuter ce projet localement, veuillez suivre les instructions ci-dessous :
+1. Clone this repository
+2. Install dependencies:
+   `pip install -r requirements.txt`
 
-1. Clonez ce dépôt sur votre machine locale :
-   ```bash
-   git clone https://github.com/votre-utilisateur/votre-repo.git
-   ```
-2. Naviguez dans le répertoire du projet :
-   ```bash
-   cd votre-repo
-   ```
-3. Créez et activez un environnement virtuel :
-   ```bash
-   python -m venv env
-   source env/bin/activate  # Pour Windows: env\Scripts\activate
-   ```
-4. Installez les dépendances requises :
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Usage
 
-## Utilisation
+1. Data preparation: Use `clean_dataset.ipynb` to clean the data.
+2. Model training:
 
-1. Prétraitez les données :
-   ```bash
-   jupyter notebook clean_dataset.ipynb
-   ```
-2. Entraînez les modèles :
-   ```bash
-   jupyter notebook training-ML.ipynb
-   jupyter notebook training-DL.ipynb
-   jupyter notebook training-transformers.ipynb
-   ```
-3. Testez les modèles :
-   ```bash
-   jupyter notebook test.ipynb
-   ```
-4. Exécutez l'application :
-   ```bash
-   python app_latest.py
-   ```
+- For machine learning models: `training-ML.ipynb`
+- For deep learning models: `training-DL.ipynb` and `training-LSTM.ipynb`
+- For transformer models: `training-transformers.ipynb`
+
+3. Evaluation and testing: Use `test.ipynb`
+4. Application: Run `app_latest.py` to start the Python application: `streamlit run app_latest.py`
+
+## Results
+
+The best performance was achieved with the DistilCamemBERT model:
+
+- Precision: 0.78
+- Recall: 0.81
+- F1-Score: 0.80
 
 ## Contribution
 
-Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet, veuillez suivre les étapes suivantes :
+Contributions to this project are welcome. Feel free to open an issue or submit a pull request.
 
-1. Forkez ce dépôt.
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`).
-3. Commitez vos changements (`git commit -m 'Add some AmazingFeature'`).
-4. Poussez la branche (`git push origin feature/AmazingFeature`).
-5. Ouvrez une Pull Request.
+## Authors
 
-## Auteurs
+- Clément Jantet
+- Calliste Ravix
 
-- **Clément Jantet** - [clement.jantet@ecole.ensicaen.fr](mailto:clement.jantet@ecole.ensicaen.fr)
-- **Calliste Ravix** - [calliste.ravix@ecole.ensicaen.fr](mailto:calliste.ravix@ecole.ensicaen.fr)
+## License
 
-## Remerciements
+This project is licensed under the MIT License.
 
-Nous tenons à remercier nos tuteurs à l'ENSICAEN et à NTNU, ainsi que toutes les personnes qui nous ont soutenus tout au long de ce projet.
+## Acknowledgments
 
-## Licence
-
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+We would like to thank the Norwegian University of Science and Technology (NTNU) and ENSICAEN for their support in this project.
