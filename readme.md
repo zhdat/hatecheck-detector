@@ -15,6 +15,7 @@ This project aims to detect hate speech in French on social media using various 
 
 ## Project Structure
 
+```bash
 ├── data/
 │ ├── cleaned_combined_dataset.csv
 │ └── combined_dataset.csv
@@ -62,6 +63,7 @@ This project aims to detect hate speech in French on social media using various 
 ├── training-LSTM.ipynb
 ├── training-ML.ipynb
 └── training-transformers.ipynb
+```
 
 ## Installation
 
