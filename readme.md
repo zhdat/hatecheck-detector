@@ -4,7 +4,7 @@
 
 This project aims to detect hate speech in French on social media using various machine learning and deep learning techniques. It was developed as part of an internship at the Norwegian University of Science and Technology (NTNU).
 
-## Fonctionnalités
+## Features
 
 - Creation and preprocessing of a custom French dataset
 - Implementation of machine learning models (SVM, Random Forest, Naive Bayes, Logistic Regression)
