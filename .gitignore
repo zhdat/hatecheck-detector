@@ -4,4 +4,5 @@ static/*
 results/*
 .ipynb_checkpoints/*
 .conda/*
+*/.DS_Store
 .DS_Store
